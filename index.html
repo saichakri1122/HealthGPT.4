@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="index.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Monitor</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to right, #8e44ad, #3498db);
+            color: #fff;
+            height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .heading {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .card {
+            background: #ffffff20;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .card h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .card p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .btn {
+            background: #f39c12;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #e67e22;
+        }
+
+        /* Form Section */
+        .form-section {
+            display: none;
+            background: #ffffff20;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .form-section input,
+        .form-section textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+        #feedback {
+            height: 100px;
+        }
+        #error-message {
+            color: red;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            background: #2c3e50;
+            width: 100%;
+        }
+        .team {
+            font-weight: bold;
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="heading">Mental Health Monitor</h1>
+        <p class="tagline">Empowering Minds, Improving Lives</p>
+    </header>
+    <main class="content">
+        <div class="card">
+            <h2>Welcome</h2>
+            <p>This tool helps assess and monitor mental health using AI technology. Explore features, track progress, and gain insights.</p>
+            <button class="btn" onclick="startJourney()">Get Started</button>
+        </div>
+        <div id="form-section" class="form-section hidden">
+            <h2>Start Your Mental Health Assessment</h2>
+            <form id="assessment-form">
+                <input type="text" id="name" placeholder="Enter your name" required>
+                <textarea id="feedback" placeholder="Provide some feedback or concerns..." required></textarea>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            <p id="error-message" class="hidden">Please fill out all fields before submitting!</p>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>© 2024 by <span class="team">SSM Team</span></p>
+    </footer>
+
+    <script>
+        // Function to show the form when "Get Started" button is clicked
+        function startJourney() {
+            document.querySelector(".card").style.display = "none"; // Hide the welcome card
+            document.getElementById("form-section").style.display = "block"; // Show the form
+        }
+
+        // Form Validation
+        document.getElementById("assessment-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const name = document.getElementById("name").value;
+            const feedback = document.getElementById("feedback").value;
+
+            if (name === "" || feedback === "") {
+                document.getElementById("error-message").classList.remove("hidden"); // Show error message
+            } else {
+                document.getElementById("error-message").classList.add("hidden"); // Hide error message
+                alert("Thank you for your input!");
+                // You can add functionality here to submit the form data to a server or API
+            }
+        });
+    </script>
+</body>
+</html>
